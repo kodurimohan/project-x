@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     if (!userId) return new NextResponse("Unautorized", { status: 401 });
     if (!name) return new NextResponse("Name is required", { status: 400 });
 
-    const store = prismadb.store.create({
+    const store = await prismadb.store.create({
       data: {
         name,
         userId,
